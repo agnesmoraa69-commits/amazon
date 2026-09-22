@@ -61,8 +61,44 @@ body {
 .rating-row { color: #de7921; font-size: 13px; font-weight: 600; }
 .pdp-title { font-size: 15px; font-weight: 500; line-height: 1.4; color: #0f1111; margin-bottom: 15px; }
 
-.pdp-image-box { width: 100%; border-radius: 8px; overflow: hidden; background: #f7f7f7; text-align: center; margin-bottom: 15px; }
-.pdp-image-box img { width: 100%; max-height: 480px; object-fit: contain; }
+/* Color Swatches Grid */
+.color-swatch {
+    transition: border-color 0.2s ease, transform 0.1s ease;
+}
+.color-swatch:hover {
+    transform: scale(1.02);
+}
+.color-swatch.active {
+    border: 2px solid #007185 !important;
+}
+
+/* PDP Image Carousel & Slideshow */
+.pdp-image-box { 
+    width: 100%; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background: #f7f7f7; 
+    text-align: center; 
+    margin-bottom: 15px; 
+    position: relative;
+    touch-action: pan-y;
+}
+.pdp-image-box img { 
+    width: 100%; 
+    max-height: 480px; 
+    object-fit: contain; 
+    display: block;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Carousel Control Buttons */
+.pdp-image-box button {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+.pdp-image-box button:active {
+    transform: translateY(-50%) scale(0.92);
+}
 
 .price-section { margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
 .discount-tag { background: #cc0c39; color: white; padding: 3px 8px; font-size: 13px; font-weight: bold; border-radius: 2px; }
@@ -74,6 +110,7 @@ body {
 .btn-main {
     width: 100%; padding: 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
     cursor: pointer; border: 1px solid transparent; text-align: center;
+    transition: background-color 0.2s ease;
 }
 .btn-cart { background: #ffd814; border-color: #fcd200; }
 .btn-buy { background: #ffa41c; border-color: #ff8f00; }
@@ -129,4 +166,3 @@ body {
     display: inline-block; padding: 10px 28px; border: 1px solid #d5d9d9;
     border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; background: #f0f2f2;
 }
-
