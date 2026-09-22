@@ -56,34 +56,6 @@ const catalogDatabase = [
     }
 ];
 
-function renderSlide() {
-    const images = productGallery[currentColor];
-    const imgElement = document.getElementById("main-slide-image");
-    if (imgElement && images && images.length > 0) {
-        imgElement.src = images[currentSlideIndex];
-    }
-}
-
-function nextSlide() {
-    const images = productGallery[currentColor];
-    if (!images || images.length === 0) return;
-    currentSlideIndex = (currentSlideIndex + 1) % images.length;
-    renderSlide();
-}
-
-function prevSlide() {
-    const images = productGallery[currentColor];
-    if (!images || images.length === 0) return;
-    currentSlideIndex = (currentSlideIndex - 1 + images.length) % images.length;
-    renderSlide();
-}
-
-function selectColor(color) {
-    if (!productGallery[color]) return;
-    currentColor = color;
-    currentSlideIndex = 0;
-    renderSlide();
-}
 function initStorefront() {
     renderFeed('storefront-feed', catalogDatabase);
     updateCarousel();
@@ -97,6 +69,7 @@ function switchView(viewId) {
 }
 
 function selectColor(colorName, element) {
+    if (!productGallery[colorName]) return;
     currentColor = colorName;
     currentSlideIndex = 0;
 
