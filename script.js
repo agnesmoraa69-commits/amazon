@@ -5,14 +5,14 @@ const productGallery = {
         "images/brown-3.jpg",
         "images/brown-4.jpg"
     ],
-    "A02-army green": [
-        "images/green-1.jpg"
+    "A02-": [
+        "images/brown-2.jpg"
     ],
-    "A03-black": [
-        "images/black-1.jpg"
+    "A03-": [
+        "images/brown-3.jpg"
     ],
-    "A04-burgundy": [
-        "images/burgundy-1.jpg"
+    "A04-": [
+        "images/brown-4.jpg"
     ]
 };
 
