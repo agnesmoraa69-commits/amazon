@@ -9,13 +9,16 @@ const productGallery = {
         "images/brown-4.jpg"
     ],
     "A02-army green": [
-        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop"
+        "images/army-green-1.jpg",
+        "images/army-green-2.jpg"
     ],
     "A03-black": [
-        "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&auto=format&fit=crop"
+        "images/black-1.jpg",
+        "images/black-2.jpg"
     ],
     "A04-burgundy": [
-        "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600&auto=format&fit=crop"
+        "images/burgundy-1.jpg",
+        "images/burgundy-2.jpg"
     ]
 };
 
@@ -35,24 +38,52 @@ const catalogDatabase = [
         desc: "Crewneck Slim Fit Casual Everyday Top",
         color: "Olive Green",
         basePrice: 28.00,
-        img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop"
+        img: "images/army-green-1.jpg"
     },
     {
         title: "Bow Knit Crewneck Sweater",
         desc: "Cute Fall Soft Textured Knit Pullover",
         color: "Midnight Black",
         basePrice: 35.00,
-        img: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&auto=format&fit=crop"
+        img: "images/black-1.jpg"
     },
     {
         title: "Relaxed Linen Blend Pants",
         desc: "Lightweight Summer Elastic Waist Trousers",
         color: "Cream White",
         basePrice: 30.00,
-        img: "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600&auto=format&fit=crop"
+        img: "images/burgundy-1.jpg"
     }
 ];
 
+function renderSlide() {
+    const images = productGallery[currentColor];
+    const imgElement = document.getElementById("main-slide-image");
+    if (imgElement && images && images.length > 0) {
+        imgElement.src = images[currentSlideIndex];
+    }
+}
+
+function nextSlide() {
+    const images = productGallery[currentColor];
+    if (!images || images.length === 0) return;
+    currentSlideIndex = (currentSlideIndex + 1) % images.length;
+    renderSlide();
+}
+
+function prevSlide() {
+    const images = productGallery[currentColor];
+    if (!images || images.length === 0) return;
+    currentSlideIndex = (currentSlideIndex - 1 + images.length) % images.length;
+    renderSlide();
+}
+
+function selectColor(color) {
+    if (!productGallery[color]) return;
+    currentColor = color;
+    currentSlideIndex = 0;
+    renderSlide();
+}
 function initStorefront() {
     renderFeed('storefront-feed', catalogDatabase);
     updateCarousel();
