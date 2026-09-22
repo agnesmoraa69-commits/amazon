@@ -30,29 +30,25 @@ const catalogDatabase = [
         title: "RITERA Plus Size Women Corduroy Pants Waist Wide Leg Trouser",
         desc: "Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL",
         color: "A01-brown",
-        basePrice: 32.00,
-        img: "images/brown-1.jpg"
+        basePrice: 32.00
     },
     {
         title: "Striped Y2K Crop Top",
         desc: "Crewneck Slim Fit Casual Everyday Top",
         color: "Olive Green",
-        basePrice: 28.00,
-        img: "images/army-green-1.jpg"
+        basePrice: 28.00
     },
     {
         title: "Bow Knit Crewneck Sweater",
         desc: "Cute Fall Soft Textured Knit Pullover",
         color: "Midnight Black",
-        basePrice: 35.00,
-        img: "images/black-1.jpg"
+        basePrice: 35.00
     },
     {
         title: "Relaxed Linen Blend Pants",
         desc: "Lightweight Summer Elastic Waist Trousers",
         color: "Cream White",
-        basePrice: 30.00,
-        img: "images/burgundy-1.jpg"
+        basePrice: 30.00
     }
 ];
 
@@ -166,7 +162,7 @@ function addToCart(btn) {
         setTimeout(() => {
             btn.innerText = prevText;
             btn.style.backgroundColor = '#ffd814';
-        }, 1500);
+        }, 1200);
     }
 }
 
@@ -244,27 +240,28 @@ function renderFeed(targetId, items) {
                         <button class="btn-main btn-buy" style="padding:6px 12px; font-size:12px; width:auto;" onclick="openCheckout()">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-img-box">
-                    <img src="${item.img}" alt="${item.title}">
+                <div style="width: 100px; height: 120px; background: #2a2a2a; color: #ff4d4d; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; text-align: center; border-radius: 4px; flex-shrink: 0;">
+                    OUT OF STOCK
                 </div>
             </div>
         `;
     }).join('');
 }
 
+// Optimized Smooth Modal Triggers
 function openCheckout() {
     const modal = document.getElementById('checkout-modal');
-    if (modal) modal.style.display = 'flex';
+    if (modal) modal.classList.add('active');
 }
 
 function closeCheckout() {
     const modal = document.getElementById('checkout-modal');
-    if (modal) modal.style.display = 'none';
+    if (modal) modal.classList.remove('active');
 }
 
 function processPayment(e) {
     e.preventDefault();
-    alert('Payment processed successfully!');
+    alert('Order placed successfully!');
     closeCheckout();
     totalItemsInCart = 0;
     const cartCount = document.getElementById('cart-count');
