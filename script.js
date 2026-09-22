@@ -6,9 +6,9 @@ const AI_SEARCH_ENDPOINT = "https://api.yourdomain.com/v1/ai-search";
 // Structured clothing inventory
 const catalogDatabase = [
     {
-        title: "Wide Leg Corduroy Trousers",
-        desc: "High Waisted Barrel Pants with Side Pockets",
-        color: "Espresso Brown",
+        title: "RITERA Plus Size Women Corduroy Pants Waist Wide Leg Trouser",
+        desc: "Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL",
+        color: "A01-brown",
         basePrice: 32.00,
         img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop"
     },
@@ -52,9 +52,28 @@ function switchView(viewId) {
     window.scrollTo(0, 0);
 }
 
+function selectColor(colorName, imgSrc, element) {
+    const colorLabel = document.getElementById('selected-color-label');
+    const mainImg = document.getElementById('pdp-main-img');
+
+    if (colorLabel) colorLabel.innerText = colorName;
+    if (mainImg) mainImg.src = imgSrc;
+
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.style.border = '1px solid #ccc';
+    });
+
+    if (element) {
+        element.style.border = '2px solid #007185';
+    } else if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.style.border = '2px solid #007185';
+    }
+}
+
 function addToCart(btn) {
     totalItemsInCart++;
-    document.getElementById('cart-count').innerText = totalItemsInCart;
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.innerText = totalItemsInCart;
     
     if (btn) {
         const prevText = btn.innerText;
@@ -72,16 +91,19 @@ function handleSearchKey(e) {
 }
 
 async function executeSearch() {
-    const query = document.getElementById('main-search-input').value.trim();
+    const input = document.getElementById('main-search-input');
+    if (!input) return;
+    const query = input.value.trim();
     if (!query) return;
 
     const heading = document.getElementById('search-query-heading');
     const status = document.getElementById('search-status');
     const feed = document.getElementById('search-feed');
 
-    heading.innerText = `Results for "${query}"`;
-    status.innerText = "Analyzing search query with AI...";
-    feed.innerHTML = "";
+    if (heading) heading.innerText = `Results for "${query}"`;
+    if (status) status.innerText = "Analyzing search query with AI...";
+    if (feed) feed.innerHTML = "";
+    
     switchView('search-view');
 
     try {
@@ -94,17 +116,16 @@ async function executeSearch() {
         if (!response.ok) throw new Error("API request failed");
 
         const data = await response.json();
-        status.innerText = "";
+        if (status) status.innerText = "";
 
         if (data.results && data.results.length > 0) {
             renderFeed('search-feed', data.results);
         } else {
-            status.innerText = "No direct AI recommendations found. Showing related store items.";
+            if (status) status.innerText = "No direct AI recommendations found. Showing related store items.";
             fallbackSearch(query);
         }
     } catch (error) {
-        // Fallback to internal database on API failure
-        status.innerText = "Showing catalog results:";
+        if (status) status.innerText = "Showing catalog results:";
         fallbackSearch(query);
     }
 }
@@ -119,6 +140,8 @@ function fallbackSearch(query) {
 
 function renderFeed(targetId, items) {
     const container = document.getElementById(targetId);
+    if (!container) return;
+
     container.innerHTML = items.map(item => {
         const discountedPrice = (item.basePrice * 0.60).toFixed(2);
         const originalPrice = item.basePrice.toFixed(2);
@@ -147,11 +170,13 @@ function renderFeed(targetId, items) {
 }
 
 function openCheckout() {
-    document.getElementById('checkout-modal').style.display = 'flex';
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.style.display = 'flex';
 }
 
 function closeCheckout() {
-    document.getElementById('checkout-modal').style.display = 'none';
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.style.display = 'none';
 }
 
 function processPayment(e) {
@@ -159,7 +184,8 @@ function processPayment(e) {
     alert('Payment processed successfully!');
     closeCheckout();
     totalItemsInCart = 0;
-    document.getElementById('cart-count').innerText = 0;
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.innerText = 0;
 }
 
 function shareWebsite() {
@@ -176,4 +202,3 @@ function shareWebsite() {
 
 // Initialize feed
 initStorefront();
-
