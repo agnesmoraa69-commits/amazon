@@ -77,10 +77,12 @@ function selectColor(colorName, element) {
     if (colorLabel) colorLabel.innerText = colorName;
 
     document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.classList.remove('active');
         swatch.style.border = '1px solid #ccc';
     });
 
     if (element) {
+        element.classList.add('active');
         element.style.border = '2px solid #007185';
     }
 
