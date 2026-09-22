@@ -63,10 +63,7 @@ body {
 
 /* Color Swatches Grid */
 .color-swatch {
-    transition: border-color 0.2s ease, transform 0.1s ease;
-}
-.color-swatch:hover {
-    transform: scale(1.02);
+    transition: border-color 0.15s ease;
 }
 .color-swatch.active {
     border: 2px solid #007185 !important;
@@ -85,7 +82,6 @@ body {
 
 /* PDP Image Carousel & Slideshow */
 .pdp-image-box {
-
     width: 100%; 
     border-radius: 8px; 
     overflow: hidden; 
@@ -100,16 +96,6 @@ body {
     max-height: 480px; 
     object-fit: contain; 
     display: block;
-    transition: opacity 0.2s ease-in-out;
-}
-
-/* Carousel Control Buttons */
-.pdp-image-box button {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: background 0.2s ease, transform 0.1s ease;
-}
-.pdp-image-box button:active {
-    transform: translateY(-50%) scale(0.92);
 }
 
 .price-section { margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
@@ -122,7 +108,6 @@ body {
 .btn-main {
     width: 100%; padding: 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
     cursor: pointer; border: 1px solid transparent; text-align: center;
-    transition: background-color 0.2s ease;
 }
 .btn-cart { background: #ffd814; border-color: #fcd200; }
 .btn-buy { background: #ffa41c; border-color: #ff8f00; }
@@ -131,14 +116,12 @@ body {
 .brand-hero { text-align: center; padding: 20px 0; }
 .brand-hero h1 { font-family: serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 5px; }
 .brand-hero p { font-style: italic; font-size: 13px; color: #555; }
-.hero-img { width: 100%; height: 300px; object-fit: cover; display: block; }
 
 /* Pinterest Style Grid */
 .section-title { text-align: center; font-size: 18px; margin: 25px 0 15px; font-weight: normal; }
 .pinterest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 10px; }
 .grid-item { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background: #eee; }
 .grid-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
-.grid-item img { width: 100%; height: 100%; object-fit: cover; }
 .grid-overlay-text {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     color: white; font-family: "Times New Roman", serif; font-size: 20px; 
@@ -154,23 +137,43 @@ body {
 .product-desc { font-size: 13px; color: #565959; margin-bottom: 8px; line-height: 1.3; }
 .price-block { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
 
-.product-img-box { width: 110px; height: 135px; border-radius: 4px; overflow: hidden; background: #f8f8f8; flex-shrink: 0; }
-.product-img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Modal Checkout */
+/* High-Performance Hardware Accelerated Modal Overlay */
 .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.65); display: none; justify-content: center; align-items: center; z-index: 200;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.5); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: opacity, visibility;
+    transform: translateZ(0);
+    transition: opacity 0.15s linear, visibility 0.15s linear;
 }
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
 .modal-card {
-    background: #fff; width: 90%; max-width: 440px; border-radius: 8px; padding: 20px;
-    max-height: 90vh; overflow-y: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background: #fff; 
+    width: 90%; 
+    max-width: 400px; 
+    border-radius: 8px; 
+    padding: 20px;
+    max-height: 85vh; 
+    overflow-y: auto;
+    border: 1px solid #e2e2e2;
+    transform: translateZ(0);
 }
-.modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-.form-group { margin-bottom: 12px; }
-.form-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 4px; color: #333; }
-.form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
-.form-row { display: flex; gap: 10px; }
 
 /* Footer */
 .footer-action { text-align: center; padding: 30px 15px; border-top: 1px solid #eee; margin-top: 20px; }
