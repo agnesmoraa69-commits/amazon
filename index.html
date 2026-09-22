@@ -94,56 +94,119 @@
         </div>
     </div>
 
-    <!-- VIEW 2: CIDER STOREFRONT -->
-    <div id="storefront-view" class="view-section">
-        <div class="store-nav">
-            <span style="font-weight: bold; font-size: 14px;">CIDER Official Store</span>
-            <button class="btn-store-toggle" onclick="switchView('landing-view')">← Featured Item</button>
-        </div>
-
-        <div class="brand-hero">
-            <h1>CIDER</h1>
-            <p>Fashion starts with a feeling</p>
-        </div>
-
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop" class="hero-img" alt="Hero">
-
-        <div class="pinterest-grid" style="margin-top: 20px;">
-            <div class="grid-item wide">
-                <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop" alt="Knitwear">
-                <div class="grid-overlay-text">KNITWEAR EDIT</div>
-            </div>
-        </div>
-
-        <h3 class="section-title">Pick A Mood</h3>
-        
-        <div class="pinterest-grid">
-            <div class="grid-item wide">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop" alt="Minimalist">
-                <div class="grid-overlay-text" style="top: 20%;">MINIMALIST</div>
-            </div>
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop" alt="Elegant">
-                <div class="grid-overlay-text">ELEGANT</div>
-            </div>
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop" alt="Cute">
-                <div class="grid-overlay-text">CUTE</div>
-            </div>
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop" alt="Free">
-                <div class="grid-overlay-text">FREE</div>
-            </div>
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop" alt="Cool">
-                <div class="grid-overlay-text">COOL</div>
-            </div>
-        </div>
-
-        <h3 class="section-title">Shop The Look</h3>
-
-        <div class="product-feed" id="storefront-feed"></div>
+<!-- VIEW 2: CIDER STOREFRONT -->
+<div id="storefront-view" class="view-section">
+    <div class="store-nav" style="display:flex; justify-size:space-between; align-items:center; padding: 10px 0;">
+        <span style="font-weight: bold; font-size: 15px;">CIDER Official Store</span>
+        <button class="btn-store-toggle" onclick="switchView('landing-view')" style="padding: 6px 12px; font-size: 12px; cursor: pointer;">← Featured Item</button>
     </div>
+
+    <div class="brand-hero" style="text-align: center; margin-bottom: 15px;">
+        <h1 style="margin: 0; font-size: 28px; letter-spacing: 2px;">CIDER</h1>
+        <p style="margin: 4px 0 0 0; color: #666; font-size: 13px;">Fashion starts with a feeling</p>
+    </div>
+
+    <!-- Featured Banner -->
+    <div onclick="switchView('landing-view')" style="width: 100%; height: 200px; background: linear-gradient(135deg, #1f1f1f, #333); color: #fff; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; padding: 15px; box-sizing: border-box; margin-bottom: 20px;">
+        <span style="background: #ff4d4d; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px;">LIMITED FLASH SALE</span>
+        <div style="font-size: 20px; font-weight: bold; margin-bottom: 4px;">AUTUMN DROPS</div>
+        <div style="font-size: 12px; color: #ccc; margin-bottom: 10px;">High-Street AI Fashion Line</div>
+        <button style="background: #fff; color: #000; border: none; padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; cursor: pointer;">Explore Catalog →</button>
+    </div>
+
+    <h3 class="section-title" style="font-size: 16px; margin-bottom: 12px;">Trending Outfits (40% OFF)</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+        
+        <!-- Outfit Card 1 -->
+        <div onclick="switchView('landing-view')" style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer;">
+            <div style="width: 100%; height: 160px; background: #2b2b2b; color: #ff4d4d; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold;">
+                <span style="font-size: 14px;">OUT OF STOCK</span>
+                <span style="font-size: 10px; color: #aaa; margin-top: 4px;">[AI Render Preview]</span>
+            </div>
+            <div style="padding: 8px;">
+                <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">Vintage Ribbed Cardigan Set</div>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <span style="background: #ffebe8; color: #ff4d4d; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 2px;">-40%</span>
+                    <span style="font-weight: bold; font-size: 14px; color: #111;">$11.40</span>
+                    <span style="font-size: 11px; color: #888; text-decoration: line-through;">$19.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outfit Card 2 -->
+        <div onclick="switchView('landing-view')" style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer;">
+            <div style="width: 100%; height: 160px; background: #2b2b2b; color: #ff4d4d; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold;">
+                <span style="font-size: 14px;">OUT OF STOCK</span>
+                <span style="font-size: 10px; color: #aaa; margin-top: 4px;">[AI Render Preview]</span>
+            </div>
+            <div style="padding: 8px;">
+                <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">High-Waisted Baggy Denim</div>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <span style="background: #ffebe8; color: #ff4d4d; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 2px;">-40%</span>
+                    <span style="font-weight: bold; font-size: 14px; color: #111;">$14.40</span>
+                    <span style="font-size: 11px; color: #888; text-decoration: line-through;">$24.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outfit Card 3 -->
+        <div onclick="switchView('landing-view')" style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer;">
+            <div style="width: 100%; height: 160px; background: #2b2b2b; color: #ff4d4d; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold;">
+                <span style="font-size: 14px;">OUT OF STOCK</span>
+                <span style="font-size: 10px; color: #aaa; margin-top: 4px;">[AI Render Preview]</span>
+            </div>
+            <div style="padding: 8px;">
+                <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">Minimalist Cropped Hoodie</div>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <span style="background: #ffebe8; color: #ff4d4d; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 2px;">-40%</span>
+                    <span style="font-weight: bold; font-size: 14px; color: #111;">$9.60</span>
+                    <span style="font-size: 11px; color: #888; text-decoration: line-through;">$16.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outfit Card 4 -->
+        <div onclick="switchView('landing-view')" style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer;">
+            <div style="width: 100%; height: 160px; background: #2b2b2b; color: #ff4d4d; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold;">
+                <span style="font-size: 14px;">OUT OF STOCK</span>
+                <span style="font-size: 10px; color: #aaa; margin-top: 4px;">[AI Render Preview]</span>
+            </div>
+            <div style="padding: 8px;">
+                <div style="font-size: 12px; font-weight: bold; margin-bottom: 4px;">Oversized Fleece Pullover</div>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <span style="background: #ffebe8; color: #ff4d4d; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 2px;">-40%</span>
+                    <span style="font-weight: bold; font-size: 14px; color: #111;">$13.20</span>
+                    <span style="font-size: 11px; color: #888; text-decoration: line-through;">$22.00</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3 class="section-title" style="font-size: 16px; margin-bottom: 12px;">Shop By Mood</h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
+        <div onclick="switchView('landing-view')" style="height: 100px; background: #262626; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; cursor: pointer; border: 1px solid #333;">
+            <span style="font-size: 12px; font-weight: bold; letter-spacing: 1px;">MINIMALIST</span>
+            <span style="font-size: 11px; color: #ff4d4d; font-weight: bold; margin-top: 2px;">OUT OF STOCK</span>
+        </div>
+        <div onclick="switchView('landing-view')" style="height: 100px; background: #262626; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; cursor: pointer; border: 1px solid #333;">
+            <span style="font-size: 12px; font-weight: bold; letter-spacing: 1px;">ELEGANT</span>
+            <span style="font-size: 11px; color: #ff4d4d; font-weight: bold; margin-top: 2px;">OUT OF STOCK</span>
+        </div>
+        <div onclick="switchView('landing-view')" style="height: 100px; background: #262626; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; cursor: pointer; border: 1px solid #333;">
+            <span style="font-size: 12px; font-weight: bold; letter-spacing: 1px;">CUTE & CASUAL</span>
+            <span style="font-size: 11px; color: #ff4d4d; font-weight: bold; margin-top: 2px;">OUT OF STOCK</span>
+        </div>
+        <div onclick="switchView('landing-view')" style="height: 100px; background: #262626; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; cursor: pointer; border: 1px solid #333;">
+            <span style="font-size: 12px; font-weight: bold; letter-spacing: 1px;">STREETWEAR</span>
+            <span style="font-size: 11px; color: #ff4d4d; font-weight: bold; margin-top: 2px;">OUT OF STOCK</span>
+        </div>
+    </div>
+
+    <div class="product-feed" id="storefront-feed"></div>
+</div>
 
     <!-- VIEW 3: SEARCH RESULTS PAGE -->
     <div id="search-view" class="view-section">
