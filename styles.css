@@ -1,0 +1,132 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: #fff; 
+    color: #0f1111; 
+}
+
+/* Navigation & Header */
+.amz-header { 
+    background: #232f3e; 
+    padding: 10px 15px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    color: white; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-left { display: flex; align-items: center; gap: 15px; }
+.logo { font-size: 22px; font-weight: bold; letter-spacing: -0.5px; cursor: pointer; }
+.cart-icon { position: relative; cursor: pointer; font-size: 18px; }
+.cart-badge {
+    position: absolute; top: -6px; right: -10px; background: #f08804; color: #111;
+    font-size: 11px; font-weight: bold; border-radius: 50%; padding: 1px 6px;
+}
+
+/* Search Bar */
+.search-container { display: flex; padding: 10px; background: #232f3e; }
+.search-input { 
+    flex-grow: 1; padding: 12px; border: none; border-radius: 4px 0 0 4px; font-size: 15px; outline: none;
+}
+.search-btn { 
+    background: #febd69; border: none; padding: 0 18px; border-radius: 0 4px 4px 0; font-size: 18px; cursor: pointer;
+}
+
+.deliver-banner { background: #37475a; color: white; padding: 10px 15px; font-size: 13px; }
+
+/* Store Navigation Header */
+.store-nav {
+    display: flex; justify-content: space-between; align-items: center; padding: 12px 15px;
+    border-bottom: 1px solid #ddd; background: #fff;
+}
+.btn-store-toggle {
+    background: #f0f2f2; border: 1px solid #d5d9d9; border-radius: 20px;
+    padding: 6px 16px; font-size: 13px; font-weight: 600; cursor: pointer; color: #0f1111;
+}
+
+/* Views */
+.view-section { display: none; }
+.view-section.active { display: block; }
+
+/* Product Landing Page (PDP) */
+.pdp-container { padding: 15px; max-width: 600px; margin: 0 auto; }
+.pdp-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.rating-row { color: #de7921; font-size: 13px; font-weight: 600; }
+.pdp-title { font-size: 15px; font-weight: 500; line-height: 1.4; color: #0f1111; margin-bottom: 15px; }
+
+.pdp-image-box { width: 100%; border-radius: 8px; overflow: hidden; background: #f7f7f7; text-align: center; margin-bottom: 15px; }
+.pdp-image-box img { width: 100%; max-height: 480px; object-fit: contain; }
+
+.price-section { margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.discount-tag { background: #cc0c39; color: white; padding: 3px 8px; font-size: 13px; font-weight: bold; border-radius: 2px; }
+.current-price { font-size: 26px; font-weight: 700; color: #0f1111; }
+.original-price { font-size: 14px; color: #565959; text-decoration: line-through; }
+
+/* General Buttons */
+.action-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.btn-main {
+    width: 100%; padding: 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
+    cursor: pointer; border: 1px solid transparent; text-align: center;
+}
+.btn-cart { background: #ffd814; border-color: #fcd200; }
+.btn-buy { background: #ffa41c; border-color: #ff8f00; }
+
+/* Brand Storefront Elements */
+.brand-hero { text-align: center; padding: 20px 0; }
+.brand-hero h1 { font-family: serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 5px; }
+.brand-hero p { font-style: italic; font-size: 13px; color: #555; }
+.hero-img { width: 100%; height: 300px; object-fit: cover; display: block; }
+
+/* Pinterest Style Grid */
+.section-title { text-align: center; font-size: 18px; margin: 25px 0 15px; font-weight: normal; }
+.pinterest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 10px; }
+.grid-item { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background: #eee; }
+.grid-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; }
+.grid-overlay-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: white; font-family: "Times New Roman", serif; font-size: 20px; 
+    letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.6); text-transform: uppercase;
+    text-align: center; width: 100%;
+}
+
+/* Product Feed */
+.product-feed { padding: 15px 10px; }
+.product-card { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 18px 0; gap: 12px; }
+.product-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.product-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.product-desc { font-size: 13px; color: #565959; margin-bottom: 8px; line-height: 1.3; }
+.price-block { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
+
+.product-img-box { width: 110px; height: 135px; border-radius: 4px; overflow: hidden; background: #f8f8f8; flex-shrink: 0; }
+.product-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Modal Checkout */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65); display: none; justify-content: center; align-items: center; z-index: 200;
+}
+.modal-card {
+    background: #fff; width: 90%; max-width: 440px; border-radius: 8px; padding: 20px;
+    max-height: 90vh; overflow-y: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 4px; color: #333; }
+.form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
+.form-row { display: flex; gap: 10px; }
+
+/* Footer */
+.footer-action { text-align: center; padding: 30px 15px; border-top: 1px solid #eee; margin-top: 20px; }
+.share-btn {
+    display: inline-block; padding: 10px 28px; border: 1px solid #d5d9d9;
+    border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; background: #f0f2f2;
+}
+
