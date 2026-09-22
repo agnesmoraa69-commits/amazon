@@ -1,15 +1,12 @@
 let totalItemsInCart = 0;
-
-// Custom AI backend endpoint URL
 const AI_SEARCH_ENDPOINT = "https://api.yourdomain.com/v1/ai-search";
 
-// Multi-image slideshow galleries mapped by color variant
 const productGallery = {
     "A01-brown": [
-        "./images/brown-1.jpg",
-        "./images/brown-2.jpg",
-        "./images/brown-3.jpg",
-        "./images/brown-4.jpg"
+        "images/brown-1.jpg",
+        "images/brown-2.jpg",
+        "images/brown-3.jpg",
+        "images/brown-4.jpg"
     ],
     "A02-army green": [
         "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop"
@@ -25,14 +22,13 @@ const productGallery = {
 let currentColor = "A01-brown";
 let currentSlideIndex = 0;
 
-// Catalog Database
 const catalogDatabase = [
     {
         title: "RITERA Plus Size Women Corduroy Pants Waist Wide Leg Trouser",
         desc: "Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL",
         color: "A01-brown",
         basePrice: 32.00,
-        img: "./images/brown-1.jpg"
+        img: "images/brown-1.jpg"
     },
     {
         title: "Striped Y2K Crop Top",
@@ -82,8 +78,6 @@ function selectColor(colorName, element) {
 
     if (element) {
         element.style.border = '2px solid #007185';
-    } else if (window.event && window.event.currentTarget) {
-        window.event.currentTarget.style.border = '2px solid #007185';
     }
 
     updateCarousel();
