@@ -64,7 +64,8 @@ function initStorefront() {
 
 function switchView(viewId) {
     document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
-    document.getElementById(viewId).classList.add('active');
+    const target = document.getElementById(viewId);
+    if (target) target.classList.add('active');
     window.scrollTo(0, 0);
 }
 
@@ -92,6 +93,10 @@ function selectColor(colorName, element) {
 function updateCarousel() {
     const images = productGallery[currentColor] || [];
     if (images.length === 0) return;
+
+    if (currentSlideIndex >= images.length) {
+        currentSlideIndex = 0;
+    }
 
     const mainImg = document.getElementById('pdp-main-img');
     if (mainImg) mainImg.src = images[currentSlideIndex];
