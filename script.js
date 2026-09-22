@@ -1,42 +1,38 @@
 let totalItemsInCart = 0;
 
-// Set your custom AI backend endpoint URL here
+// Custom AI backend endpoint URL
 const AI_SEARCH_ENDPOINT = "https://api.yourdomain.com/v1/ai-search";
 
 // Multi-image slideshow galleries mapped by color variant
 const productGallery = {
     "A01-brown": [
-        "images/brown-1.jpg",
-        "images/brown-2.jpg",
-        "images/brown-3.jpg",
-        "images/brown-4.jpg"
+        "./images/brown-1.jpg",
+        "./images/brown-2.jpg",
+        "./images/brown-3.jpg",
+        "./images/brown-4.jpg"
     ],
     "A02-army green": [
-        "images/green-1.jpg",
-        "images/green-2.jpg",
-        "images/green-3.jpg"
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&auto=format&fit=crop"
     ],
     "A03-black": [
-        "images/black-1.jpg",
-        "images/black-2.jpg"
+        "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&auto=format&fit=crop"
     ],
     "A04-burgundy": [
-        "images/burgundy-1.jpg",
-        "images/burgundy-2.jpg"
+        "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600&auto=format&fit=crop"
     ]
 };
 
 let currentColor = "A01-brown";
 let currentSlideIndex = 0;
 
-// Structured clothing inventory
+// Catalog Database
 const catalogDatabase = [
     {
         title: "RITERA Plus Size Women Corduroy Pants Waist Wide Leg Trouser",
         desc: "Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL",
         color: "A01-brown",
         basePrice: 32.00,
-        img: "images/brown-1.jpg"
+        img: "./images/brown-1.jpg"
     },
     {
         title: "Striped Y2K Crop Top",
@@ -58,13 +54,6 @@ const catalogDatabase = [
         color: "Cream White",
         basePrice: 30.00,
         img: "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600&auto=format&fit=crop"
-    },
-    {
-        title: "Tailored Wide Leg Trousers",
-        desc: "Pleated High Rise Formal Casual Slacks",
-        color: "Rustic Wine",
-        basePrice: 38.00,
-        img: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&auto=format&fit=crop"
     }
 ];
 
@@ -80,7 +69,6 @@ function switchView(viewId) {
     window.scrollTo(0, 0);
 }
 
-// Select a color swatch and reset the carousel to slide 0 for that color
 function selectColor(colorName, element) {
     currentColor = colorName;
     currentSlideIndex = 0;
@@ -101,7 +89,6 @@ function selectColor(colorName, element) {
     updateCarousel();
 }
 
-// Update main image and dot indicators for the active color carousel
 function updateCarousel() {
     const images = productGallery[currentColor] || [];
     if (images.length === 0) return;
@@ -144,7 +131,6 @@ function goToSlide(index) {
     updateCarousel();
 }
 
-// Touch swipe navigation for mobile
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -214,7 +200,6 @@ async function executeSearch() {
         if (data.results && data.results.length > 0) {
             renderFeed('search-feed', data.results);
         } else {
-            if (status) status.innerText = "No direct AI recommendations found. Showing related store items.";
             fallbackSearch(query);
         }
     } catch (error) {
@@ -293,5 +278,4 @@ function shareWebsite() {
     }
 }
 
-// Initialize application on startup
 document.addEventListener('DOMContentLoaded', initStorefront);
