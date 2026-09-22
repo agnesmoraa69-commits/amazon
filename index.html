@@ -52,17 +52,17 @@
 
             <!-- Color Swatches Grid -->
             <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 12px;">
-                <div class="color-swatch active" onclick="selectColor('A01-brown', this)" style="border: 2px solid #007185; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
-                    <img src="images/brown-1.jpg" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
+                <div class="color-swatch active" onclick="selectColor('A01-brown', this); goToSlide(0);" style="border: 2px solid #007185; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
+                    <img src="Images/brown-1.jpg" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
                 </div>
-                <div class="color-swatch" onclick="selectColor('A02-army green', this)" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
-                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=100&auto=format&fit=crop" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
+                <div class="color-swatch" onclick="selectColor('A01-brown', this); goToSlide(1);" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
+                    <img src="Images/brown-2.jpg" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
                 </div>
-                <div class="color-swatch" onclick="selectColor('A03-black', this)" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
-                    <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=100&auto=format&fit=crop" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
+                <div class="color-swatch" onclick="selectColor('A01-brown', this); goToSlide(2);" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
+                    <img src="Images/brown-3.jpg" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
                 </div>
-                <div class="color-swatch" onclick="selectColor('A04-burgundy', this)" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
-                    <img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=100&auto=format&fit=crop" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
+                <div class="color-swatch" onclick="selectColor('A01-brown', this); goToSlide(3);" style="border: 1px solid #ccc; border-radius: 6px; padding: 2px; cursor: pointer; min-width: 60px;">
+                    <img src="Images/brown-4.jpg" style="width: 100%; height: 60px; object-fit: cover; border-radius: 4px;">
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
             <div class="pdp-image-box" style="position: relative; user-select: none; margin-bottom: 8px;">
                 <button onclick="prevSlide()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; z-index: 10;">❮</button>
                 
-                <img src="images/brown-1.jpg" id="pdp-main-img" alt="Product view" style="width: 100%; display: block; border-radius: 4px;">
+                <img src="Images/brown-1.jpg" id="pdp-main-img" alt="Product view" style="width: 100%; display: block; border-radius: 4px;">
                 
                 <button onclick="nextSlide()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; z-index: 10;">❯</button>
             </div>
