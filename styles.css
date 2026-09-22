@@ -72,8 +72,20 @@ body {
     border: 2px solid #007185 !important;
 }
 
+/* Color Swatch Styling */
+.swatch-box {
+    width: 100%;
+    height: 60px;
+    border-radius: 4px;
+}
+.swatch-brown      { background-color: #8B4513; }
+.swatch-army-green { background-color: #4B5320; }
+.swatch-black      { background-color: #1A1A1A; }
+.swatch-burgundy   { background-color: #800020; }
+
 /* PDP Image Carousel & Slideshow */
-.pdp-image-box { 
+.pdp-image-box {
+
     width: 100%; 
     border-radius: 8px; 
     overflow: hidden; 
