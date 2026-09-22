@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amaz0n - Editorial Storefront</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="amz-header">
+        <div class="header-left">
+            <span style="font-size: 20px; cursor: pointer;">☰</span>
+            <span class="logo" onclick="switchView('landing-view')">amaz0n</span>
+        </div>
+        <div class="cart-icon" onclick="openCheckout()">
+            👤 🛒 <span class="cart-badge" id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Global Search -->
+    <div class="search-container">
+        <input type="text" id="main-search-input" class="search-input" placeholder="Search clothes, outfits, trends..." onkeypress="handleSearchKey(event)">
+        <button class="search-btn" onclick="executeSearch()">🔍</button>
+    </div>
+
+    <!-- Location Banner -->
+    <div class="deliver-banner">📍 Delivery worldwide ∨</div>
+
+    <!-- VIEW 1: LANDING PAGE (Featured Outfit) -->
+    <div id="landing-view" class="view-section active">
+        <div class="pdp-container">
+            <div class="pdp-header-nav">
+                <button class="btn-store-toggle" onclick="switchView('storefront-view')">Visit the Store ›</button>
+                <div class="rating-row">4.5 ★★★★★ (20)</div>
+            </div>
+
+            <div class="pdp-title">
+                RITERA Plus Size Women Corduroy Pants Waist Wide Leg Trouser Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL
+            </div>
+
+            <div class="pdp-image-box">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop" alt="RITERA Corduroy Trousers">
+            </div>
+
+            <div class="price-section">
+                <span class="discount-tag">-40%</span>
+                <span class="current-price">$19.20</span>
+                <span class="original-price">$32.00</span>
+            </div>
+
+            <div class="action-group">
+                <button class="btn-main btn-cart" onclick="addToCart(this)">Add to cart</button>
+                <button class="btn-main btn-buy" onclick="openCheckout()">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 2: CIDER STOREFRONT -->
+    <div id="storefront-view" class="view-section">
+        <div class="store-nav">
+            <span style="font-weight: bold; font-size: 14px;">CIDER Official Store</span>
+            <button class="btn-store-toggle" onclick="switchView('landing-view')">← Featured Item</button>
+        </div>
+
+        <div class="brand-hero">
+            <h1>CIDER</h1>
+            <p>Fashion starts with a feeling</p>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop" class="hero-img" alt="Hero">
+
+        <div class="pinterest-grid" style="margin-top: 20px;">
+            <div class="grid-item wide">
+                <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop" alt="Knitwear">
+                <div class="grid-overlay-text">KNITWEAR EDIT</div>
+            </div>
+        </div>
+
+        <h3 class="section-title">Pick A Mood</h3>
+        
+        <div class="pinterest-grid">
+            <div class="grid-item wide">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop" alt="Minimalist">
+                <div class="grid-overlay-text" style="top: 20%;">MINIMALIST</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop" alt="Elegant">
+                <div class="grid-overlay-text">ELEGANT</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop" alt="Cute">
+                <div class="grid-overlay-text">CUTE</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop" alt="Free">
+                <div class="grid-overlay-text">FREE</div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop" alt="Cool">
+                <div class="grid-overlay-text">COOL</div>
+            </div>
+        </div>
+
+        <h3 class="section-title">Shop The Look</h3>
+
+        <div class="product-feed" id="storefront-feed"></div>
+    </div>
+
+    <!-- VIEW 3: SEARCH RESULTS PAGE -->
+    <div id="search-view" class="view-section">
+        <div style="padding: 15px;">
+            <h2 id="search-query-heading" style="font-size: 18px; margin-bottom: 5px;"></h2>
+            <div id="search-status" style="margin-bottom: 15px; color: #565959; font-size: 14px;"></div>
+            <div class="product-feed" id="search-feed"></div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn-store-toggle" onclick="switchView('storefront-view')">← Back to Store</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-title">Payment Details</div>
+            <form id="payment-form" onsubmit="processPayment(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Card Number (16-digit)</label>
+                    <input type="text" maxlength="16" placeholder="4532 8892 1029 3841" required pattern="\d{16}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/\d{2}">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="text" maxlength="4" placeholder="123" required pattern="\d{3,4}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Billing Address</label>
+                    <input type="text" placeholder="123 Main Street, Apt 4B" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;">
+                        <label>City</label>
+                        <input type="text" placeholder="New York" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Zip Code</label>
+                        <input type="text" placeholder="10001" required>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button type="button" class="btn-main" style="background: #e7e7e7;" onclick="closeCheckout()">Cancel</button>
+                    <button type="submit" class="btn-main btn-buy">Pay Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Share Block -->
+    <div class="footer-action">
+        <div class="share-btn" onclick="shareWebsite()">↑ Share with friends</div>
+        <p style="font-size: 13px; color: #565959; margin-top: 8px;">Share this storefront with your friends.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
