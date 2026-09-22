@@ -3,6 +3,32 @@ let totalItemsInCart = 0;
 // Set your custom AI backend endpoint URL here
 const AI_SEARCH_ENDPOINT = "https://api.yourdomain.com/v1/ai-search";
 
+// Multi-image slideshow galleries mapped by color variant
+const productGallery = {
+    "A01-brown": [
+        "images/brown-1.jpg",
+        "images/brown-2.jpg",
+        "images/brown-3.jpg",
+        "images/brown-4.jpg"
+    ],
+    "A02-army green": [
+        "images/green-1.jpg",
+        "images/green-2.jpg",
+        "images/green-3.jpg"
+    ],
+    "A03-black": [
+        "images/black-1.jpg",
+        "images/black-2.jpg"
+    ],
+    "A04-burgundy": [
+        "images/burgundy-1.jpg",
+        "images/burgundy-2.jpg"
+    ]
+};
+
+let currentColor = "A01-brown";
+let currentSlideIndex = 0;
+
 // Structured clothing inventory
 const catalogDatabase = [
     {
@@ -10,7 +36,7 @@ const catalogDatabase = [
         desc: "Loose Wide Leg Barrel Trousers, High Waisted, Side Pocket, Fall Winter, Elastic Waist Baggy, Lounge Soft Warm XL-5XL",
         color: "A01-brown",
         basePrice: 32.00,
-        img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop"
+        img: "images/brown-1.jpg"
     },
     {
         title: "Striped Y2K Crop Top",
@@ -44,6 +70,8 @@ const catalogDatabase = [
 
 function initStorefront() {
     renderFeed('storefront-feed', catalogDatabase);
+    updateCarousel();
+    initSwipe();
 }
 
 function switchView(viewId) {
@@ -52,12 +80,13 @@ function switchView(viewId) {
     window.scrollTo(0, 0);
 }
 
-function selectColor(colorName, imgSrc, element) {
-    const colorLabel = document.getElementById('selected-color-label');
-    const mainImg = document.getElementById('pdp-main-img');
+// Select a color swatch and reset the carousel to slide 0 for that color
+function selectColor(colorName, element) {
+    currentColor = colorName;
+    currentSlideIndex = 0;
 
+    const colorLabel = document.getElementById('selected-color-label');
     if (colorLabel) colorLabel.innerText = colorName;
-    if (mainImg) mainImg.src = imgSrc;
 
     document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.style.border = '1px solid #ccc';
@@ -68,6 +97,70 @@ function selectColor(colorName, imgSrc, element) {
     } else if (window.event && window.event.currentTarget) {
         window.event.currentTarget.style.border = '2px solid #007185';
     }
+
+    updateCarousel();
+}
+
+// Update main image and dot indicators for the active color carousel
+function updateCarousel() {
+    const images = productGallery[currentColor] || [];
+    if (images.length === 0) return;
+
+    const mainImg = document.getElementById('pdp-main-img');
+    if (mainImg) mainImg.src = images[currentSlideIndex];
+
+    const dotsContainer = document.getElementById('carousel-dots');
+    if (dotsContainer) {
+        dotsContainer.innerHTML = images.map((_, idx) => `
+            <span onclick="goToSlide(${idx})" style="
+                height: 8px; 
+                width: 8px; 
+                background-color: ${idx === currentSlideIndex ? '#007185' : '#ccc'}; 
+                border-radius: 50%; 
+                display: inline-block; 
+                cursor: pointer;
+                transition: background-color 0.2s;">
+            </span>
+        `).join('');
+    }
+}
+
+function nextSlide() {
+    const images = productGallery[currentColor] || [];
+    if (images.length === 0) return;
+    currentSlideIndex = (currentSlideIndex + 1) % images.length;
+    updateCarousel();
+}
+
+function prevSlide() {
+    const images = productGallery[currentColor] || [];
+    if (images.length === 0) return;
+    currentSlideIndex = (currentSlideIndex - 1 + images.length) % images.length;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlideIndex = index;
+    updateCarousel();
+}
+
+// Touch swipe navigation for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+function initSwipe() {
+    const box = document.querySelector('.pdp-image-box');
+    if (!box) return;
+
+    box.addEventListener('touchstart', e => { 
+        touchStartX = e.changedTouches[0].screenX; 
+    }, { passive: true });
+
+    box.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 40) nextSlide();
+        if (touchEndX - touchStartX > 40) prevSlide();
+    }, { passive: true });
 }
 
 function addToCart(btn) {
@@ -200,5 +293,5 @@ function shareWebsite() {
     }
 }
 
-// Initialize feed
-initStorefront();
+// Initialize application on startup
+document.addEventListener('DOMContentLoaded', initStorefront);
